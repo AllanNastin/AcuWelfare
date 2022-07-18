@@ -3,19 +3,26 @@ import ReactDOM from 'react-dom/client';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import i18n from "i18next";
-import { useTranslation, initReactI18next } from "react-i18next";
+import { initReactI18next } from "react-i18next";
 import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpApi from 'i18next-http-backend';
+import 'bootstrap/dist/js/bootstrap.js';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'flag-icons'
+// import 'flag-icon-css/css/flag-icon.min.css';
+// import 'f';
 
 
-import './index.css';
-// import App from './App';
+// import './index.css';
+import App from './App';
 
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .use(LanguageDetector)
   .use(HttpApi)
   .init({
+    supportedLngs: ['en', 'ua', 'ru'],
     // the translations
     // (tip move them in a JSON file and import them,
     // or even better, manage them via a UI: https://react.i18next.com/guides/multiple-translation-files#manage-your-translations-with-a-management-gui)
@@ -32,11 +39,11 @@ i18n
 
   });
 
-function App() {
-  const { t } = useTranslation();
+// function App() {
+//   const { t } = useTranslation();
 
-  return <h2>{t('welcome_to_react')}</h2>;
-}
+//   return <h2>{t('welcome_to_react')}</h2>;
+// }
 
 // // append app to dom
 // const root = createRoot(document.getElementById('root'));
