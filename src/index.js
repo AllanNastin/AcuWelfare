@@ -10,6 +10,9 @@ import 'bootstrap/dist/js/bootstrap.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'flag-icons'
+// import '../node_modules/flag-icons/css/flag-icons.min.css';
+import '../node_modules/flag-icon-css/css/flag-icons.min.css';
+// import 'flag-icon-css/css/flag-icon.min.css';
 // import 'flag-icon-css/css/flag-icon.min.css';
 // import 'f';
 
