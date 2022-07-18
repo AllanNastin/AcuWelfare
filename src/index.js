@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom/client';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
@@ -38,7 +38,7 @@ i18n
     backend: {
       loadPath: 'assets/locales/{{lng}}/translation.json'
     },
-    react: { useSuspense: false },
+    // react: { useSuspense: false },
 
   });
 
@@ -53,12 +53,19 @@ i18n
 // root.render(
 //   <App />
 // );
+const loadingMarkup = (
+  <div className="py-4 text-center">
+    <h2>Loading...</h2>
+  </div>
+)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <Suspense fallback={loadingMarkup}>
   <React.StrictMode>
     <App />
   </React.StrictMode>
+  </Suspense>
 );
 
 // // If you want your app to work offline and load faster, you can change

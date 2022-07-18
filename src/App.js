@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import logo from './logo.svg';
 import "./App.css";
 import { useTranslation } from "react-i18next";
-import "flag-icons";
+import i18next from "i18next";
+import cookies from "js-cookie";
+// import "flag-icons";
 
 const languages = [
   {
@@ -19,14 +21,15 @@ const languages = [
     code: "ru",
     name: "Русский",
     country_code: "ru",
+    // dir: "rtl",
   },
 ];
 
-const GlobeIcon = ( ) => (
+const GlobeIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width= "24"
-    height= "24"
+    width="24"
+    height="24"
     fill="currentColor"
     class="bi bi-globe"
     viewBox="0 0 16 16"
@@ -57,11 +60,17 @@ const GlobeIcon = ( ) => (
 // }
 
 function App() {
-  const { t } = useTranslation();
+  const currentLanguageCode = cookies.get('i18next') || 'en'
+  const currentLanguage = languages.find(l => l.code === currentLanguageCode)
+  const { t } = useTranslation()
 
   const releaseDate = new Date("2022-7-15");
   const timeDifference = new Date() - releaseDate;
   const number_of_days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+  // useEffect(() => {
+  //   // document.body.dir = currentLanguage.dir || 'ltr'
+  // }, [currentLanguage]);
 
   return (
     <div className="contrainer">
@@ -79,7 +88,11 @@ function App() {
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             {languages.map(({ code, name, country_code }) => (
               <li key={country_code}>
-                <button className="dropdown-item">
+                <button
+                  className="dropdown-item"
+                  onClick={() => i18next.changeLanguage(code)}
+                  disabled={code === currentLanguageCode}
+                >
                   <span
                     className={`flag-icon flag-icon-${country_code} mx-2`}
                   ></span>
