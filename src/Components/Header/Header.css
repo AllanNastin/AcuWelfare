@@ -1,0 +1,31 @@
+.main{
+  width: 100vw;
+  height: 55px;
+  margin-bottom: 3%;
+  background: #222;
+  display: grid;
+  grid-template-areas: "left middle right";
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  gap: 0 20vw;
+}
+
+.middle{
+  grid-area: middle;
+}
+
+.homeButton img {
+  height: 50px;
+}
+
+.mapButton{
+  grid-area: right;
+  font-size: 2em;
+}
+.mapButton > * {
+  color: turquoise;
+}
+
+.header {
+  text-align: center;
+}

@@ -1,4 +1,6 @@
 {
     "welcome_to_react": "Ruskiy",
-    "days": "{{number_of_days}} dney"
+    "days": "{{number_of_days}} dney",
+    "welcome": "Добро пожаловать в Ирландию",
+    "opening_paragraph": "Мы надеемся, что вам понравится ваше пребывание. Вверху есть некоторая информация, которая может оказаться вам полезной."
 }

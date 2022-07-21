@@ -1,7 +1,7 @@
-import React, {Suspense} from 'react';
-import ReactDOM from 'react-dom/client';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from 'i18next-browser-languagedetector';
@@ -61,11 +61,12 @@ const loadingMarkup = (
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Suspense fallback={loadingMarkup}>
+  // <Suspense fallback={loadingMarkup}>
   <React.StrictMode>
     <App />
   </React.StrictMode>
-  </Suspense>
+  // document.getElementById('root')
+  // </Suspense>
 );
 
 // // If you want your app to work offline and load faster, you can change

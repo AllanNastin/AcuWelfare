@@ -1,0 +1,56 @@
+.footer {
+  background: #222;
+  position: fixed;
+  height: 5rem;
+  bottom: 0;
+  width: 100vw;
+}
+
+.mainFooter {
+  justify-content: center;
+  width: 100vw;
+  height: 100%;
+  display: grid;
+  grid-template-areas: "left right";
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  gap: 0 0vw;
+  /* padding-bottom: 0; */
+}
+
+.version {
+  color: aliceblue;
+  grid-area: left;
+}
+
+.social {
+  grid-area: right;
+  color: aliceblue;
+}
+
+.socialGrid {
+  display: grid;
+  grid-template-areas: "left right";
+  grid-template-columns: 1fr 1fr;
+  height: 50px;
+  justify-items: center;
+  gap: 0 1vw;
+
+}
+
+.socialLeft {
+  grid-area: left;
+}
+
+.socialRight {
+  grid-area: right;
+}
+
+.pSocial {
+  margin: 0px;
+}
+
+.icon {
+  margin-top: 0px;
+}

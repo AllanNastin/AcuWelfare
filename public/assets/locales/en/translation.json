@@ -1,4 +1,6 @@
 {
     "welcome_to_react": "Welcome to React and react-i18next",
-    "days": "{{number_of_days}} days"
+    "days": "{{number_of_days}} days",
+    "welcome": "Welcome to Ireland",
+    "opening_paragraph": "We hope you enjoy your stay. At the top there is some information that you might find useful."
 }

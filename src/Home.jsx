@@ -1,16 +1,12 @@
-import React from "react"
+// import React, { useEffect } from "react"
 // import logo from './logo.svg';
 import "./App.css"
-// import { useTranslation } from "react-i18next"
-// import './Text.css'
+import { useTranslation } from "react-i18next"
+import './Text.css'
+import Header from './Components/Header/Header'
 // import Header from './Components/Header/Header.js'
-// import { Router } from "react-router-dom"
 // import "flag-icons";
 
-import {BrowserRouter as Router, Route, Routes } from "react-router-dom"
-
-import {Home} from './Home'
-import { Test } from "./Test"
 
 // function App() {
 //   return (
@@ -33,8 +29,8 @@ import { Test } from "./Test"
 //   );
 // }
 
-function App() {
-  // const { t } = useTranslation()
+export const Home = () => {
+    const { t } = useTranslation()
 
   // const releaseDate = new Date("2022-7-15");
   // const timeDifference = new Date() - releaseDate;
@@ -45,23 +41,18 @@ function App() {
   // }, [currentLanguage]);
 
   return (
-    <Router>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/f" element={<Test />} />
-      </Routes>
-    </Router>
-    // <div className="contrainer">
-    //   <div className="header">
-    //     <Header/>
-    //   </div>
-    //   <div className="d-flex flex-column align-items-start margin-left">
-    //     <h1 className="font-weight-normal mb-3">{t("welcome")}</h1>
-    //     <p> {t("opening_paragraph")}</p>
-    //     {/* <p>{t("days", { number_of_days })}</p> */}
-    //   </div>
-    // </div>
+    <div className="contrainer">
+        {/* hi */}
+      <div className="header">
+        <Header/>
+      </div>
+      <div className="d-flex flex-column align-items-start margin-left">
+        <h1 className="font-weight-normal mb-3">{t("welcome")}</h1>
+        <p> {t("opening_paragraph")}</p>
+        {/* <p>{t("days", { number_of_days })}</p> */}
+      </div>
+    </div>
   );
 }
 
-export default App;
+// export default App;

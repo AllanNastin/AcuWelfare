@@ -1,4 +1,6 @@
 {
     "welcome_to_react": "Ukrainsk",
-    "days": "{{number_of_days}} dni"
+    "days": "{{number_of_days}} dni",
+    "welcome": "Ласкаво просимо до Ірландії",
+    "opening_paragraph": "Ми сподіваємося, що вам сподобається ваше перебування. Вгорі є деяка інформація, яка може виявитися вам корисною."
 }
