@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 // import reportWebVitals from './reportWebVitals';
@@ -61,12 +61,12 @@ const loadingMarkup = (
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <Suspense fallback={loadingMarkup}>
+  <Suspense fallback={loadingMarkup}>
   <React.StrictMode>
     <App />
   </React.StrictMode>
-  // document.getElementById('root')
-  // </Suspense>
+  {/* // document.getElementById('root') */}
+  </Suspense>
 );
 
 // // If you want your app to work offline and load faster, you can change
