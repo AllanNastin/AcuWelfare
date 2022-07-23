@@ -2,5 +2,10 @@
     "welcome_to_react": "Welcome to React and react-i18next",
     "days": "{{number_of_days}} days",
     "welcome": "Welcome to Ireland",
-    "opening_paragraph": "We hope you enjoy your stay. At the top there is some information that you might find useful."
+    "opening_paragraph": "We hope you enjoy your stay. At the top there is some information that you might find useful.",
+    "home_button": "Home",
+    "education_button": "Education",
+    "work_button": "Work",
+    "support_button": "Support",
+    "transport_button": "Transport"
 }

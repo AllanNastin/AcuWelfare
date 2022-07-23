@@ -1,7 +1,6 @@
 import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-// import reportWebVitals from './reportWebVitals';
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from 'i18next-browser-languagedetector';
@@ -10,14 +9,8 @@ import 'bootstrap/dist/js/bootstrap.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'flag-icons'
-// import '../node_modules/flag-icons/css/flag-icons.min.css';
 import '../node_modules/flag-icon-css/css/flag-icons.min.css';
-// import 'flag-icon-css/css/flag-icon.min.css';
-// import 'flag-icon-css/css/flag-icon.min.css';
-// import 'f';
 
-
-// import './index.css';
 import App from './App';
 
 i18n
@@ -42,17 +35,6 @@ i18n
 
   });
 
-// function App() {
-//   const { t } = useTranslation();
-
-//   return <h2>{t('welcome_to_react')}</h2>;
-// }
-
-// // append app to dom
-// const root = createRoot(document.getElementById('root'));
-// root.render(
-//   <App />
-// );
 const loadingMarkup = (
   <div className="py-4 text-center">
     <h2>Loading...</h2>

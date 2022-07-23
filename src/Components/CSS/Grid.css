@@ -1,0 +1,18 @@
+.grid-left-middle-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "left middle right";
+  grid-gap: 0vh 0vw;
+}
+
+.grid-left {
+  grid-area: left;
+}
+
+.grid-middle {
+  grid-area: middle;
+}
+
+.grid-right {
+  grid-area: right;
+}

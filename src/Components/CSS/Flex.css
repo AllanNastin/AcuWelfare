@@ -1,0 +1,10 @@
+.flex{
+    display: flex;
+}
+.flex-equal-spacing{
+    justify-content: space-between;
+}
+/* flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-between;
+align-items: center; */
