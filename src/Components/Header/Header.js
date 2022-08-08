@@ -41,6 +41,7 @@ const Header = () => {
         <Link className="margin-left" to="/work">{t("work_button")}</Link>
         <Link className="margin-left" to="/support">{t("support_button")}</Link>
         <Link className="margin-left" to="/transport">{t("transport_button")}</Link>
+        <Link className="margin-left" to="/taxes">{t("taxes_button")}</Link>
       <div className="grid-right">
         <div className="d-flex justify-content-end">
           <div className="dropdown">

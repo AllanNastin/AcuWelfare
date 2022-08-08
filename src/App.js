@@ -9,6 +9,7 @@ import {Home} from './Components/Pages/Home'
 import { Support } from "./Components/Pages/Support"
 import { Transport } from "./Components/Pages/Transport"
 import { Work } from "./Components/Pages/Work"
+import { Taxes } from './Components/Pages/Taxes'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/work" element={<Work />} />
         <Route exact path="/support" element={<Support />} />
         <Route exact path="/transport" element={<Transport />} />
+        <Route exact path="/taxes" element={<Taxes />} />
       </Routes>
     </Router>
   );

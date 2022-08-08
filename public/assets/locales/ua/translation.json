@@ -7,5 +7,8 @@
     "education_button": "Образование",
     "work_button": "Работа",
     "support_button": "Підтримка",
-    "transport_button": "Транспорт"
+    "transport_button": "Транспорт",
+    "taxes_button": "Податки",
+    "submit_button": "Підтвердити",
+    "calculate_button": "Розрахувати"
 }

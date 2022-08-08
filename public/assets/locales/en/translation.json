@@ -7,5 +7,8 @@
     "education_button": "Education",
     "work_button": "Work",
     "support_button": "Support",
-    "transport_button": "Transport"
+    "transport_button": "Transport",
+    "taxes_button": "Taxes",
+    "submit_button": "Submit",
+    "calculate_button": "Calculate"
 }

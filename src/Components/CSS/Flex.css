@@ -1,15 +1,20 @@
-.flex{
-    display: flex;
+.flex {
+  display: flex;
 }
-.flex-equal-spacing{
-    justify-content: space-between;
+
+.flex-centre {
+  flex-direction: column;
+  align-items: center;
+}
+.flex-equal-spacing {
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 600px) {
-    .flex{
-        flex-direction: column;
-        align-items: center;
-    }
+  .flex {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 /* flex-direction: row;
 flex-wrap: wrap;
