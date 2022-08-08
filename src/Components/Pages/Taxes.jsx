@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 import "../CSS/Flex.css";
-// import { useState } from "react";
 
 var grossPay = 6;
 var taxCredit = 3400;
@@ -14,6 +14,8 @@ var paye = 0;
 var usc = 0;
 var prsi = 0;
 var taxPay = 0;
+var percentage = 0;
+
 var uscCuttOff = 13000;
 var uscFirstBand = 12012;
 var uscSecondBand = 21295;
@@ -29,11 +31,15 @@ var prsiTaxRate = 0.04;
 
 export const Taxes = () => {
   const { t } = useTranslation();
+  //   const [netPay, setNetPay] = useState(0);
   const getInputValue = (event) => {
     grossPay = event.target.value;
     // console.log(grossPay);
   };
   const calculateTax = () => {
+    usc = 0;
+    prsi = 0;
+    // paye = 0;
     if (grossPay <= cutOff) {
       paye = grossPay * lowBand;
     } else if (grossPay > cutOff) {
@@ -64,6 +70,8 @@ export const Taxes = () => {
     }
     taxPay = paye + prsi + usc;
     netPay = grossPay - taxPay;
+    percentage = (taxPay / grossPay) * 100;
+
     console.log(
       "Gross Pay: €" +
         grossPay +
@@ -75,6 +83,8 @@ export const Taxes = () => {
         prsi +
         "\n USC: €" +
         usc +
+        "\nPercentage: " +
+        percentage + "%" +
         "\nNet pay: €" +
         netPay
     );
