@@ -10,5 +10,9 @@
     "transport_button": "Транспорт",
     "taxes_button": "Налоги",
     "submit_button": "Отправить",
-    "calculate_button": "Рассчитать"
+    "calculate_button": "Рассчитать",
+    "gross_income": "Заработная плата",
+    "net_income": "Чистая прибыль",
+    "taxes": "Налоги",
+    "tax_percentage": "Процент налога"
 }

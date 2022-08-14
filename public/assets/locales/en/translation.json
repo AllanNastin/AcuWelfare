@@ -10,5 +10,9 @@
     "transport_button": "Transport",
     "taxes_button": "Taxes",
     "submit_button": "Submit",
-    "calculate_button": "Calculate"
+    "calculate_button": "Calculate",
+    "gross_income": "Gross Income",
+    "net_income": "Net Income",
+    "taxes": "Taxes",
+    "tax_percentage": "Tax Percentage"
 }

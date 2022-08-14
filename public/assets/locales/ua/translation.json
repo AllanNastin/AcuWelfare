@@ -10,5 +10,10 @@
     "transport_button": "Транспорт",
     "taxes_button": "Податки",
     "submit_button": "Підтвердити",
-    "calculate_button": "Розрахувати"
+    "calculate_button": "Розрахувати",
+    "gross_income": "Загальний дохід",
+    "net_income": "Неподатковий дохід",
+    "taxes": "Податки",
+    "tax_percentage": "Процент податку"
+
 }

@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 
 import "../CSS/Flex.css";
+import "../CSS/Text.css";
 
 // var grossPay = 6;
 var taxCredit = 3400;
@@ -41,11 +42,11 @@ export const Taxes = () => {
   // const [grossPay, setGrossPay] = useState(0)
   //   const [netPay, setNetPay] = useState(0);
   const getInputValue = (event) => {
-    tempGrossPay = event.target.value;
+    tempGrossPay = Number(event.target.value);
     // console.log(grossPay);
   };
   const calculateTax = () => {
-    setGrossPay(tempGrossPay);
+    setGrossPay((tempGrossPay).toFixed(2));
     tempUsc = 0;
     tempPrsi = 0;
     // paye = 0;
@@ -77,30 +78,30 @@ export const Taxes = () => {
     if (tempGrossPay > prsiCutOff) {
       tempPrsi = tempGrossPay * prsiTaxRate;
     }
-    setPrsi(tempPrsi);
-    setUsc(tempUsc);
-    setPaye(tempPaye);
-    setTaxPay(tempPaye + tempPrsi + tempUsc);
-    setNetPay(tempGrossPay - tempPaye + tempPrsi + tempUsc);
-    setPercentage(((tempPaye + tempPrsi + tempUsc) / tempGrossPay) * 100);
+    setPrsi(tempPrsi.toFixed(2));
+    setUsc(tempUsc.toFixed(2));
+    setPaye(tempPaye.toFixed(2));
+    setTaxPay((tempPaye + tempPrsi + tempUsc).toFixed(2));
+    setNetPay((tempGrossPay - tempPaye + tempPrsi + tempUsc).toFixed(2));
+    setPercentage((((tempPaye + tempPrsi + tempUsc) / tempGrossPay) * 100).toFixed(2));
 
-    console.log(
-      "Gross Pay: €" +
-        grossPay +
-        "\nTaxes due: €" +
-        taxPay +
-        "\n PAYE: €" +
-        paye +
-        "\n PRSI: €" +
-        prsi +
-        "\n USC: €" +
-        usc +
-        "\nPercentage: " +
-        percentage +
-        "%" +
-        "\nNet pay: €" +
-        netPay
-    );
+    // console.log(
+    //   "Gross Pay: €" +
+    //     grossPay +
+    //     "\nTaxes due: €" +
+    //     taxPay +
+    //     "\n PAYE: €" +
+    //     paye +
+    //     "\n PRSI: €" +
+    //     prsi +
+    //     "\n USC: €" +
+    //     usc +
+    //     "\nPercentage: " +
+    //     percentage +
+    //     "%" +
+    //     "\nNet pay: €" +
+    //     netPay
+    // );
 
     // <console className="logf">"Gross Pay: €" +
     // grossPay +
@@ -148,23 +149,20 @@ export const Taxes = () => {
         {t("calculate_button")}
       </button>
       <p>
-        Gross Pay: {grossPay}
+        {t("gross_income")}: €{grossPay}
         <br />
-        Taxes Due: {taxPay}
+        {t("taxes")}: €{taxPay}
         <br />
-        Paye: {paye}
+        {"\t"}Paye: €{paye}
         <br />
-        PRSI: {prsi}
+        PRSI: €{prsi}
         <br />
-        USC: {usc}
+        USC: €{usc}
         <br />
-        Percentage: {percentage}
+        {t("tax_percentage")}: {percentage}%
         <br />
-        NetPay: {netPay}
+        {t("net_income")}: €{netPay}
       </p>
-      {/* <span>{netPay}</span> */}
-      {/* <input type={"text"} onChange={getInputValue}/> */}
-      {/* <button onClick={getInputValue}>Calculate Taxes newNumber: {newNumber}</button> */}
     </div>
   );
 };
