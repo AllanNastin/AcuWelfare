@@ -153,16 +153,17 @@ export const Taxes = () => {
         <br />
         {t("taxes")}: €{taxPay}
         <br />
-        {"\t"}Paye: €{paye}
+        &nbsp;Paye: €{paye}
         <br />
-        PRSI: €{prsi}
+        &nbsp;PRSI: €{prsi}
         <br />
-        USC: €{usc}
+        &nbsp;USC: €{usc}
         <br />
         {t("tax_percentage")}: {percentage}%
         <br />
         {t("net_income")}: €{netPay}
       </p>
+      
     </div>
   );
 };

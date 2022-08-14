@@ -5,3 +5,7 @@
 .text-left{
     text-align: left;
 }
+
+.no-bullet, .no-bullet * {
+    list-style: none;
+}
