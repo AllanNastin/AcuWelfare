@@ -18,5 +18,8 @@
     "yearly": "Yearly",
     "monthly": "Monthly",
     "weekly": "Weekly",
+    "yearly_input": "Yearly Income",
+    "monthly_input": "Monthly Input",
+    "weekly_input": "Weekly Input",
     "input": "Input"
 }

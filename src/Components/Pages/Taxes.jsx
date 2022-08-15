@@ -162,21 +162,21 @@ export const Taxes = () => {
           calculateTaxYearly();
         }}
       >
-        {t("yearly")} {t("input")}
+        {t("yearly_input")}
       </button>
       <button
         onClick={() => {
           calculateTaxMonthly();
         }}
       >
-        {t("monthly")} {t("input")}
+        {t("monthly_input")}
       </button>
       <button
         onClick={() => {
           calculateTaxWeekly();
         }}
       >
-        {t("weekly")} {t("input")}
+        {t("weekly_input")}
       </button>
       <p>
         {t("yearly")}:
