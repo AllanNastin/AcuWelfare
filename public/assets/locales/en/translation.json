@@ -14,5 +14,9 @@
     "gross_income": "Gross Income",
     "net_income": "Net Income",
     "taxes": "Taxes",
-    "tax_percentage": "Tax Percentage"
+    "tax_percentage": "Tax Percentage",
+    "yearly": "Yearly",
+    "monthly": "Monthly",
+    "weekly": "Weekly",
+    "input": "Input"
 }

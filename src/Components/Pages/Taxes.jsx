@@ -9,8 +9,9 @@ var taxCredit = 3400;
 var cutOff = 45800;
 var lowBand = 0.2;
 var highBand = 0.4;
+var userInput = 0;
 var tempGrossPay = 0;
-// var tempNetPay = 0;
+// var tempyealryNetPay = 0;
 var tempPaye = 0;
 var tempUsc = 0;
 var tempPrsi = 0;
@@ -32,7 +33,7 @@ var prsiTaxRate = 0.04;
 
 export const Taxes = () => {
   const { t } = useTranslation();
-  const [netPay, setNetPay] = useState(0);
+  const [yealryNetPay, setyealryNetPay] = useState(0);
   const [percentage, setPercentage] = useState(0);
   const [grossPay, setGrossPay] = useState(0);
   const [usc, setUsc] = useState(0);
@@ -40,13 +41,26 @@ export const Taxes = () => {
   const [paye, setPaye] = useState(0);
   const [taxPay, setTaxPay] = useState(0);
   // const [grossPay, setGrossPay] = useState(0)
-  //   const [netPay, setNetPay] = useState(0);
+  //   const [yealryNetPay, setyealryNetPay] = useState(0);
   const getInputValue = (event) => {
-    tempGrossPay = Number(event.target.value);
+    userInput = Number(event.target.value);
     // console.log(grossPay);
   };
-  const calculateTax = () => {
-    setGrossPay((tempGrossPay).toFixed(2));
+  async function calculateTaxYearly() {
+    tempGrossPay = userInput;
+    calculateTax();
+  }
+  async function calculateTaxMonthly() {
+    tempGrossPay = userInput * 12;
+    calculateTax();
+  }
+
+  async function calculateTaxWeekly() {
+    tempGrossPay = userInput * 52;
+    calculateTax();
+  }
+  async function calculateTax() {
+    setGrossPay(tempGrossPay.toFixed(2));
     tempUsc = 0;
     tempPrsi = 0;
     // paye = 0;
@@ -65,7 +79,7 @@ export const Taxes = () => {
       if (tempGrossPay > uscSecondBand) {
         tempUsc += (uscSecondBand - uscFirstBand) * uscSecondTaxRate;
       } else {
-        tempUsc += (grossPay - uscFirstBand) * uscSecondTaxRate;
+        tempUsc += (tempGrossPay - uscFirstBand) * uscSecondTaxRate;
       }
       if (tempGrossPay > uscThirdBand) {
         tempUsc += (uscThirdBand - uscSecondBand) * uscThirdTaxRate;
@@ -82,26 +96,28 @@ export const Taxes = () => {
     setUsc(tempUsc.toFixed(2));
     setPaye(tempPaye.toFixed(2));
     setTaxPay((tempPaye + tempPrsi + tempUsc).toFixed(2));
-    setNetPay((tempGrossPay - tempPaye + tempPrsi + tempUsc).toFixed(2));
-    setPercentage((((tempPaye + tempPrsi + tempUsc) / tempGrossPay) * 100).toFixed(2));
+    setyealryNetPay((tempGrossPay - tempPaye + tempPrsi + tempUsc).toFixed(2));
+    setPercentage(
+      (((tempPaye + tempPrsi + tempUsc) / tempGrossPay) * 100).toFixed(2)
+    );
 
-    // console.log(
-    //   "Gross Pay: €" +
-    //     grossPay +
-    //     "\nTaxes due: €" +
-    //     taxPay +
-    //     "\n PAYE: €" +
-    //     paye +
-    //     "\n PRSI: €" +
-    //     prsi +
-    //     "\n USC: €" +
-    //     usc +
-    //     "\nPercentage: " +
-    //     percentage +
-    //     "%" +
-    //     "\nNet pay: €" +
-    //     netPay
-    // );
+    console.log(
+      "Gross Pay: €" +
+        grossPay +
+        "\nTaxes due: €" +
+        taxPay +
+        "\n PAYE: €" +
+        paye +
+        "\n PRSI: €" +
+        prsi +
+        "\n USC: €" +
+        usc +
+        "\nPercentage: " +
+        percentage +
+        "%" +
+        "\nNet pay: €" +
+        yealryNetPay
+    );
 
     // <console className="logf">"Gross Pay: €" +
     // grossPay +
@@ -116,7 +132,7 @@ export const Taxes = () => {
     // "\nPercentage: " +
     // percentage + "%" +
     // "\nNet pay: €" +
-    // netPay</console>
+    // yealryNetPay</console>
     // (
     //   "Gross Pay: €" +
     //     grossPay +
@@ -131,24 +147,40 @@ export const Taxes = () => {
     //     "\nPercentage: " +
     //     percentage + "%" +
     //     "\nNet pay: €" +
-    //     netPay
+    //     yealryNetPay
     // );
-  };
+  }
 
   return (
     <div className="flex flex-centre">
       <input type="text" name="userInput" onChange={getInputValue} />
       {/* <input type="submit" value={t("calculate_button")} /> */}
-      <br />
+      {/* <br /> */}
       {/* take user input and print it */}
       <button
         onClick={() => {
-          calculateTax();
+          calculateTaxYearly();
         }}
       >
-        {t("calculate_button")}
+        {t("yearly")} {t("input")}
+      </button>
+      <button
+        onClick={() => {
+          calculateTaxMonthly();
+        }}
+      >
+        {t("monthly")} {t("input")}
+      </button>
+      <button
+        onClick={() => {
+          calculateTaxWeekly();
+        }}
+      >
+        {t("weekly")} {t("input")}
       </button>
       <p>
+        {t("yearly")}:
+        <br />
         {t("gross_income")}: €{grossPay}
         <br />
         {t("taxes")}: €{taxPay}
@@ -161,9 +193,8 @@ export const Taxes = () => {
         <br />
         {t("tax_percentage")}: {percentage}%
         <br />
-        {t("net_income")}: €{netPay}
+        {t("net_income")}: €{yealryNetPay}
       </p>
-      
     </div>
   );
 };

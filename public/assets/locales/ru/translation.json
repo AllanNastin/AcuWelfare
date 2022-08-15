@@ -14,5 +14,10 @@
     "gross_income": "Заработная плата",
     "net_income": "Чистая прибыль",
     "taxes": "Налоги",
-    "tax_percentage": "Процент налога"
+    "tax_percentage": "Процент налога",
+    "yearly": "Ежегодно",
+    "monthly": "Ежемесячно",
+    "weekly": "Еженедельно",
+    "input": "Ввод"
+
 }
