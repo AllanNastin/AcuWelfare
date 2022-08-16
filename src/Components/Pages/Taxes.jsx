@@ -4,19 +4,16 @@ import { useState } from "react";
 import "../CSS/Flex.css";
 import "../CSS/Text.css";
 
-// var yearlyGrossPay = 6;
-var taxCredit = 3400;
-var cutOff = 45800;
-var lowBand = 0.2;
-var highBand = 0.4;
 var userInput = 0;
 var tempGrossPay = 0;
-// var tempyearlyNetPay = 0;
 var tempPaye = 0;
 var tempUsc = 0;
 var tempPrsi = 0;
-// var tempTaxPay = 0;
-// var tempPercentage = 0;
+
+var taxCredit = 3400;
+var payeCutOff = 45800;
+var lowBand = 0.2;
+var highBand = 0.4;
 
 var uscCuttOff = 13000;
 var uscFirstBand = 12012;
@@ -31,6 +28,7 @@ var uscFourthTaxRate = 0.08;
 var prsiCutOff = 352 * 52;
 var prsiTaxRate = 0.04;
 
+
 export const Taxes = () => {
   const { t } = useTranslation();
   const [yearlyNetPay, setYearlyNetPay] = useState(0);
@@ -39,24 +37,25 @@ export const Taxes = () => {
   const [yearlyPaye, setYearlyPaye] = useState(0);
   const [yearlyTaxPay, setYearlyTaxPay] = useState(0);
   const [yearlyGrossPay, setYearlyGrossPay] = useState(0);
+
   const [monthlyNetPay, setMonthlyNetPay] = useState(0);
   const [monthlyGrossPay, setMonthlyGrossPay] = useState(0);
   const [monthlyUsc, setMonthlyUsc] = useState(0);
   const [monthlyPrsi, setMonthlyPrsi] = useState(0);
   const [monthlyPaye, setMonthlyPaye] = useState(0);
   const [monthlyTaxPay, setMonthlyTaxPay] = useState(0);
+
   const [weeklyNetPay, setWeeklyNetPay] = useState(0);
   const [weeklyGrossPay, setWeeklyGrossPay] = useState(0);
   const [weeklyUsc, setWeeklyUsc] = useState(0);
   const [weeklyPrsi, setWeeklyPrsi] = useState(0);
   const [weeklyPaye, setWeeklyPaye] = useState(0);
   const [weeklyTaxPay, setWeeklyTaxPay] = useState(0);
+
   const [percentage, setPercentage] = useState(0);
-  // const [yearlyGrossPay, setYearlyGrossPay] = useState(0)
-  //   const [yearlyNetPay, setyearlyNetPay] = useState(0);
+
   const getInputValue = (event) => {
     userInput = Number(event.target.value);
-    // console.log(yearlyGrossPay);
   };
   async function calculateTaxYearly() {
     tempGrossPay = userInput;
@@ -76,10 +75,10 @@ export const Taxes = () => {
     tempUsc = 0;
     tempPrsi = 0;
     // paye = 0;
-    if (tempGrossPay <= cutOff) {
+    if (tempGrossPay <= payeCutOff) {
       tempPaye = tempGrossPay * lowBand;
-    } else if (tempGrossPay > cutOff) {
-      tempPaye = cutOff * lowBand + (tempGrossPay - cutOff) * highBand;
+    } else if (tempGrossPay > payeCutOff) {
+      tempPaye = payeCutOff * lowBand + (tempGrossPay - payeCutOff) * highBand;
     }
     if (tempPaye <= taxCredit) {
       tempPaye = 0;
