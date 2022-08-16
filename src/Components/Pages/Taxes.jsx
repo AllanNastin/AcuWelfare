@@ -4,14 +4,14 @@ import { useState } from "react";
 import "../CSS/Flex.css";
 import "../CSS/Text.css";
 
-// var grossPay = 6;
+// var yearlyGrossPay = 6;
 var taxCredit = 3400;
 var cutOff = 45800;
 var lowBand = 0.2;
 var highBand = 0.4;
 var userInput = 0;
 var tempGrossPay = 0;
-// var tempyealryNetPay = 0;
+// var tempyearlyNetPay = 0;
 var tempPaye = 0;
 var tempUsc = 0;
 var tempPrsi = 0;
@@ -33,18 +33,30 @@ var prsiTaxRate = 0.04;
 
 export const Taxes = () => {
   const { t } = useTranslation();
-  const [yealryNetPay, setyealryNetPay] = useState(0);
+  const [yearlyNetPay, setYearlyNetPay] = useState(0);
+  const [yearlyUsc, setYearlyUsc] = useState(0);
+  const [yearlyPrsi, setYearlyPrsi] = useState(0);
+  const [yearlyPaye, setYearlyPaye] = useState(0);
+  const [yearlyTaxPay, setYearlyTaxPay] = useState(0);
+  const [yearlyGrossPay, setYearlyGrossPay] = useState(0);
+  const [monthlyNetPay, setMonthlyNetPay] = useState(0);
+  const [monthlyGrossPay, setMonthlyGrossPay] = useState(0);
+  const [monthlyUsc, setMonthlyUsc] = useState(0);
+  const [monthlyPrsi, setMonthlyPrsi] = useState(0);
+  const [monthlyPaye, setMonthlyPaye] = useState(0);
+  const [monthlyTaxPay, setMonthlyTaxPay] = useState(0);
+  const [weeklyNetPay, setWeeklyNetPay] = useState(0);
+  const [weeklyGrossPay, setWeeklyGrossPay] = useState(0);
+  const [weeklyUsc, setWeeklyUsc] = useState(0);
+  const [weeklyPrsi, setWeeklyPrsi] = useState(0);
+  const [weeklyPaye, setWeeklyPaye] = useState(0);
+  const [weeklyTaxPay, setWeeklyTaxPay] = useState(0);
   const [percentage, setPercentage] = useState(0);
-  const [grossPay, setGrossPay] = useState(0);
-  const [usc, setUsc] = useState(0);
-  const [prsi, setPrsi] = useState(0);
-  const [paye, setPaye] = useState(0);
-  const [taxPay, setTaxPay] = useState(0);
-  // const [grossPay, setGrossPay] = useState(0)
-  //   const [yealryNetPay, setyealryNetPay] = useState(0);
+  // const [yearlyGrossPay, setYearlyGrossPay] = useState(0)
+  //   const [yearlyNetPay, setyearlyNetPay] = useState(0);
   const getInputValue = (event) => {
     userInput = Number(event.target.value);
-    // console.log(grossPay);
+    // console.log(yearlyGrossPay);
   };
   async function calculateTaxYearly() {
     tempGrossPay = userInput;
@@ -60,7 +72,7 @@ export const Taxes = () => {
     calculateTax();
   }
   async function calculateTax() {
-    setGrossPay(tempGrossPay.toFixed(2));
+    setYearlyGrossPay(tempGrossPay.toFixed(2));
     tempUsc = 0;
     tempPrsi = 0;
     // paye = 0;
@@ -92,71 +104,44 @@ export const Taxes = () => {
     if (tempGrossPay > prsiCutOff) {
       tempPrsi = tempGrossPay * prsiTaxRate;
     }
-    setPrsi(tempPrsi.toFixed(2));
-    setUsc(tempUsc.toFixed(2));
-    setPaye(tempPaye.toFixed(2));
-    setTaxPay((tempPaye + tempPrsi + tempUsc).toFixed(2));
-    setyealryNetPay((tempGrossPay - (tempPaye + tempPrsi + tempUsc)).toFixed(2));
+
+    //Yearly
+    setYearlyUsc(tempUsc.toFixed(2));
+    setYearlyPaye(tempPaye.toFixed(2));
+    setYearlyPrsi(tempPrsi.toFixed(2));
+    setYearlyTaxPay((tempPaye + tempPrsi + tempUsc).toFixed(2));
+    setYearlyNetPay(
+      (tempGrossPay - (tempPaye + tempPrsi + tempUsc)).toFixed(2)
+    );
+
+    //Monthly
+    setMonthlyGrossPay((tempGrossPay / 12).toFixed(2));
+    setWeeklyUsc((tempUsc/52).toFixed(2));
+    setWeeklyPaye((tempPaye/52).toFixed(2));
+    setWeeklyPrsi((tempPrsi/52).toFixed(2));
+    setWeeklyTaxPay(((tempPaye + tempPrsi + tempUsc) / 52).toFixed(2));
+    setWeeklyNetPay(
+      ((tempGrossPay - (tempPaye + tempPrsi + tempUsc))/52).toFixed(2)
+    );
+
+    //Weekly
+    setWeeklyGrossPay((tempGrossPay / 52).toFixed(2));
+    setMonthlyUsc((tempUsc/12).toFixed(2));
+    setMonthlyPaye((tempPaye/12).toFixed(2));
+    setMonthlyPrsi((tempPrsi/12).toFixed(2));
+    setMonthlyTaxPay(((tempPaye + tempPrsi + tempUsc) / 12).toFixed(2));
+    setMonthlyNetPay(
+      ((tempGrossPay - (tempPaye + tempPrsi + tempUsc)) / 12).toFixed(2)
+    )
+    
     setPercentage(
       (((tempPaye + tempPrsi + tempUsc) / tempGrossPay) * 100).toFixed(2)
     );
-
-    // console.log(
-    //   "Gross Pay: €" +
-    //     grossPay +
-    //     "\nTaxes due: €" +
-    //     taxPay +
-    //     "\n PAYE: €" +
-    //     paye +
-    //     "\n PRSI: €" +
-    //     prsi +
-    //     "\n USC: €" +
-    //     usc +
-    //     "\nPercentage: " +
-    //     percentage +
-    //     "%" +
-    //     "\nNet pay: €" +
-    //     yealryNetPay
-    // );
-
-    // <console className="logf">"Gross Pay: €" +
-    // grossPay +
-    // "\nTaxes due: €" +
-    // taxPay +
-    // "\n PAYE: €" +
-    // paye +
-    // "\n PRSI: €" +
-    // prsi +
-    // "\n USC: €" +
-    // usc +
-    // "\nPercentage: " +
-    // percentage + "%" +
-    // "\nNet pay: €" +
-    // yealryNetPay</console>
-    // (
-    //   "Gross Pay: €" +
-    //     grossPay +
-    //     "\nTaxes due: €" +
-    //     taxPay +
-    //     "\n PAYE: €" +
-    //     paye +
-    //     "\n PRSI: €" +
-    //     prsi +
-    //     "\n USC: €" +
-    //     usc +
-    //     "\nPercentage: " +
-    //     percentage + "%" +
-    //     "\nNet pay: €" +
-    //     yealryNetPay
-    // );
   }
 
   return (
     <div className="flex flex-centre">
       <input type="text" name="userInput" onChange={getInputValue} />
-      {/* <input type="submit" value={t("calculate_button")} /> */}
-      {/* <br /> */}
-      {/* take user input and print it */}
       <button
         onClick={() => {
           calculateTaxYearly();
@@ -178,23 +163,60 @@ export const Taxes = () => {
       >
         {t("weekly_input")}
       </button>
+      <div className="flex flex-equal-spacing">
+
       <p>
         {t("yearly")}:
         <br />
-        {t("gross_income")}: €{grossPay}
+        &nbsp;{t("gross_income")}: €{yearlyGrossPay}
         <br />
-        {t("taxes")}: €{taxPay}
+        &nbsp;{t("taxes")}: €{yearlyTaxPay}
         <br />
-        &nbsp;Paye: €{paye}
+        &nbsp;&nbsp;Paye: €{yearlyPaye}
         <br />
-        &nbsp;PRSI: €{prsi}
+        &nbsp;&nbsp;PRSI: €{yearlyPrsi}
         <br />
-        &nbsp;USC: €{usc}
+        &nbsp;&nbsp;USC: €{yearlyUsc}
         <br />
-        {t("tax_percentage")}: {percentage}%
+        &nbsp;{t("tax_percentage")}: {percentage}%
         <br />
-        {t("net_income")}: €{yealryNetPay}
+        &nbsp;{t("net_income")}: €{yearlyNetPay}
       </p>
+      <p>
+        {t("monthly")}:
+        <br />
+        &nbsp;{t("gross_income")}: €{monthlyGrossPay}
+        <br />
+        &nbsp;{t("taxes")}: €{monthlyTaxPay}
+        <br />
+        &nbsp;&nbsp;Paye: €{monthlyPaye}
+        <br />
+        &nbsp;&nbsp;PRSI: €{monthlyPrsi}
+        <br />
+        &nbsp;&nbsp;USC: €{monthlyUsc}
+        <br />
+        &nbsp;{t("tax_percentage")}: {percentage}%
+        <br />
+        &nbsp;{t("net_income")}: €{monthlyNetPay}
+      </p>
+      <p>
+        {t("weekly")}:
+        <br />
+        &nbsp;{t("gross_income")}: €{weeklyGrossPay}
+        <br />
+        &nbsp;{t("taxes")}: €{weeklyTaxPay}
+        <br />
+        &nbsp;&nbsp;Paye: €{weeklyPaye}
+        <br />
+        &nbsp;&nbsp;PRSI: €{weeklyPrsi}
+        <br />
+        &nbsp;&nbsp;USC: €{weeklyUsc}
+        <br />
+        &nbsp;{t("tax_percentage")}: {percentage}%
+        <br />
+        &nbsp;{t("net_income")}: €{weeklyNetPay}
+      </p>
+      </div>
     </div>
   );
 };
