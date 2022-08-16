@@ -96,28 +96,28 @@ export const Taxes = () => {
     setUsc(tempUsc.toFixed(2));
     setPaye(tempPaye.toFixed(2));
     setTaxPay((tempPaye + tempPrsi + tempUsc).toFixed(2));
-    setyealryNetPay((tempGrossPay - tempPaye + tempPrsi + tempUsc).toFixed(2));
+    setyealryNetPay((tempGrossPay - (tempPaye + tempPrsi + tempUsc)).toFixed(2));
     setPercentage(
       (((tempPaye + tempPrsi + tempUsc) / tempGrossPay) * 100).toFixed(2)
     );
 
-    console.log(
-      "Gross Pay: €" +
-        grossPay +
-        "\nTaxes due: €" +
-        taxPay +
-        "\n PAYE: €" +
-        paye +
-        "\n PRSI: €" +
-        prsi +
-        "\n USC: €" +
-        usc +
-        "\nPercentage: " +
-        percentage +
-        "%" +
-        "\nNet pay: €" +
-        yealryNetPay
-    );
+    // console.log(
+    //   "Gross Pay: €" +
+    //     grossPay +
+    //     "\nTaxes due: €" +
+    //     taxPay +
+    //     "\n PAYE: €" +
+    //     paye +
+    //     "\n PRSI: €" +
+    //     prsi +
+    //     "\n USC: €" +
+    //     usc +
+    //     "\nPercentage: " +
+    //     percentage +
+    //     "%" +
+    //     "\nNet pay: €" +
+    //     yealryNetPay
+    // );
 
     // <console className="logf">"Gross Pay: €" +
     // grossPay +
