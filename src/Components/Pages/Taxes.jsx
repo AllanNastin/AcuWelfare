@@ -11,7 +11,7 @@ var tempUsc = 0;
 var tempPrsi = 0;
 
 var taxCredit = 3400;
-var payeCutOff = 45800;
+var payeCutOff = 36800;
 var lowBand = 0.2;
 var highBand = 0.4;
 
