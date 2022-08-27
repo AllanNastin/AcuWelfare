@@ -1,5 +1,5 @@
 import React, {Suspense} from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";

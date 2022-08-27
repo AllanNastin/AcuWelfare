@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import "../CSS/Flex.css";
 import "../CSS/Text.css";
+import "../CSS/Main.css";
 
 var userInput = 0;
 var tempGrossPay = 0;
@@ -27,7 +28,6 @@ var uscFourthTaxRate = 0.08;
 
 var prsiCutOff = 352 * 52;
 var prsiTaxRate = 0.04;
-
 
 export const Taxes = () => {
   const { t } = useTranslation();
@@ -54,20 +54,23 @@ export const Taxes = () => {
 
   const [percentage, setPercentage] = useState(0);
 
-  const getInputValue = (event) => {
-    userInput = Number(event.target.value);
-  };
+  // const getInputValue = (event) => {
+  //   userInput = Number(event.target.value);
+  //   console.log(userInput);
+  // };
+
   async function calculateTaxYearly() {
-    tempGrossPay = userInput;
+    tempGrossPay = Number(document.getElementById("userInput").value);
     calculateTax();
   }
   async function calculateTaxMonthly() {
-    tempGrossPay = userInput * 12;
+    // getInputValue();
+    tempGrossPay = Number(document.getElementById("userInput").value) * 12;
     calculateTax();
   }
 
   async function calculateTaxWeekly() {
-    tempGrossPay = userInput * 52;
+    tempGrossPay = Number(document.getElementById("userInput").value) * 52;
     calculateTax();
   }
   async function calculateTax() {
@@ -115,32 +118,33 @@ export const Taxes = () => {
 
     //Monthly
     setMonthlyGrossPay((tempGrossPay / 12).toFixed(2));
-    setWeeklyUsc((tempUsc/52).toFixed(2));
-    setWeeklyPaye((tempPaye/52).toFixed(2));
-    setWeeklyPrsi((tempPrsi/52).toFixed(2));
+    setWeeklyUsc((tempUsc / 52).toFixed(2));
+    setWeeklyPaye((tempPaye / 52).toFixed(2));
+    setWeeklyPrsi((tempPrsi / 52).toFixed(2));
     setWeeklyTaxPay(((tempPaye + tempPrsi + tempUsc) / 52).toFixed(2));
     setWeeklyNetPay(
-      ((tempGrossPay - (tempPaye + tempPrsi + tempUsc))/52).toFixed(2)
+      ((tempGrossPay - (tempPaye + tempPrsi + tempUsc)) / 52).toFixed(2)
     );
 
     //Weekly
     setWeeklyGrossPay((tempGrossPay / 52).toFixed(2));
-    setMonthlyUsc((tempUsc/12).toFixed(2));
-    setMonthlyPaye((tempPaye/12).toFixed(2));
-    setMonthlyPrsi((tempPrsi/12).toFixed(2));
+    setMonthlyUsc((tempUsc / 12).toFixed(2));
+    setMonthlyPaye((tempPaye / 12).toFixed(2));
+    setMonthlyPrsi((tempPrsi / 12).toFixed(2));
     setMonthlyTaxPay(((tempPaye + tempPrsi + tempUsc) / 12).toFixed(2));
     setMonthlyNetPay(
       ((tempGrossPay - (tempPaye + tempPrsi + tempUsc)) / 12).toFixed(2)
-    )
-    
+    );
+
     setPercentage(
       (((tempPaye + tempPrsi + tempUsc) / tempGrossPay) * 100).toFixed(2)
     );
   }
 
   return (
-    <div className="flex flex-centre">
-      <input type="text" name="userInput" onChange={getInputValue} />
+    <div className="flex flex-center">
+      <input type="text" id="userInput"/>
+      {/* <br/> */}
       <button
         onClick={() => {
           calculateTaxYearly();
@@ -162,59 +166,59 @@ export const Taxes = () => {
       >
         {t("weekly_input")}
       </button>
+      <br/>
       <div className="flex flex-equal-spacing">
-
-      <p>
-        {t("yearly")}:
-        <br />
-        &nbsp;{t("gross_income")}: €{yearlyGrossPay}
-        <br />
-        &nbsp;{t("taxes")}: €{yearlyTaxPay}
-        <br />
-        &nbsp;&nbsp;Paye: €{yearlyPaye}
-        <br />
-        &nbsp;&nbsp;PRSI: €{yearlyPrsi}
-        <br />
-        &nbsp;&nbsp;USC: €{yearlyUsc}
-        <br />
-        &nbsp;{t("tax_percentage")}: {percentage}%
-        <br />
-        &nbsp;{t("net_income")}: €{yearlyNetPay}
-      </p>
-      <p>
-        {t("monthly")}:
-        <br />
-        &nbsp;{t("gross_income")}: €{monthlyGrossPay}
-        <br />
-        &nbsp;{t("taxes")}: €{monthlyTaxPay}
-        <br />
-        &nbsp;&nbsp;Paye: €{monthlyPaye}
-        <br />
-        &nbsp;&nbsp;PRSI: €{monthlyPrsi}
-        <br />
-        &nbsp;&nbsp;USC: €{monthlyUsc}
-        <br />
-        &nbsp;{t("tax_percentage")}: {percentage}%
-        <br />
-        &nbsp;{t("net_income")}: €{monthlyNetPay}
-      </p>
-      <p>
-        {t("weekly")}:
-        <br />
-        &nbsp;{t("gross_income")}: €{weeklyGrossPay}
-        <br />
-        &nbsp;{t("taxes")}: €{weeklyTaxPay}
-        <br />
-        &nbsp;&nbsp;Paye: €{weeklyPaye}
-        <br />
-        &nbsp;&nbsp;PRSI: €{weeklyPrsi}
-        <br />
-        &nbsp;&nbsp;USC: €{weeklyUsc}
-        <br />
-        &nbsp;{t("tax_percentage")}: {percentage}%
-        <br />
-        &nbsp;{t("net_income")}: €{weeklyNetPay}
-      </p>
+        <p>
+          <span className="block text-center">{t("yearly")}:</span>
+          {/* <br /> */}
+          &nbsp;{t("gross_income")}: €{yearlyGrossPay}
+          <br />
+          &nbsp;{t("taxes")}: €{yearlyTaxPay}
+          <br />
+          &nbsp;&nbsp;Paye: €{yearlyPaye}
+          <br />
+          &nbsp;&nbsp;PRSI: €{yearlyPrsi}
+          <br />
+          &nbsp;&nbsp;USC: €{yearlyUsc}
+          <br />
+          &nbsp;{t("tax_percentage")}: {percentage}%
+          <br />
+          &nbsp;{t("net_income")}: €{yearlyNetPay}
+        </p>
+        <p>
+          <span className="block text-center">{t("monthly")}:</span>
+          {/* <br /> */}
+          &nbsp;{t("gross_income")}: €{monthlyGrossPay}
+          <br />
+          &nbsp;{t("taxes")}: €{monthlyTaxPay}
+          <br />
+          &nbsp;&nbsp;Paye: €{monthlyPaye}
+          <br />
+          &nbsp;&nbsp;PRSI: €{monthlyPrsi}
+          <br />
+          &nbsp;&nbsp;USC: €{monthlyUsc}
+          <br />
+          &nbsp;{t("tax_percentage")}: {percentage}%
+          <br />
+          &nbsp;{t("net_income")}: €{monthlyNetPay}
+        </p>
+        <p>
+          <span className="block text-center"> {t("weekly")}: </span>
+          {/* <br /> */}
+          &nbsp;{t("gross_income")}: €{weeklyGrossPay}
+          <br />
+          &nbsp;{t("taxes")}: €{weeklyTaxPay}
+          <br />
+          &nbsp;&nbsp;Paye: €{weeklyPaye}
+          <br />
+          &nbsp;&nbsp;PRSI: €{weeklyPrsi}
+          <br />
+          &nbsp;&nbsp;USC: €{weeklyUsc}
+          <br />
+          &nbsp;{t("tax_percentage")}: {percentage}%
+          <br />
+          &nbsp;{t("net_income")}: €{weeklyNetPay}
+        </p>
       </div>
     </div>
   );

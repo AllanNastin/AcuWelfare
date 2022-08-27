@@ -1,0 +1,11 @@
+.full-width{
+    width: 100%
+}
+
+.custom-width > *{
+    width: 10vw
+}
+
+.block{
+    display: block;
+}

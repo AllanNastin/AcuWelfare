@@ -2,13 +2,17 @@
   display: flex;
 }
 
-.flex-centre {
+.flex-center {
   flex-direction: column;
   align-items: center;
 }
 
 .flex-equal-spacing {
   justify-content: space-between;
+}
+
+.flex-row{
+  justify-content: center;
 }
 
 @media screen and (max-width: 650px) {
