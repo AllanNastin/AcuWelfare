@@ -17,7 +17,7 @@ var allowanceQualification;
 export const Allowance = () => {
   const { t } = useTranslation();
   const [qualificationMessage, setQualificationMessage] = useState(
-    "lol6"
+    t("allowance_test")
   );
   if (allowanceQualification === undefined && getUpdate() === true) {
     console.log("test");
