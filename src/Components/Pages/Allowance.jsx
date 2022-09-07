@@ -20,8 +20,8 @@ export const Allowance = () => {
     t("allowance_test")
   );
   if (allowanceQualification === undefined && getUpdate() === true) {
-    console.log("test");
-    setQualificationMessage("lol");
+    // console.log("test");
+    setQualificationMessage(t("allowance_test"));
     setUpdate(false);
   }
   // const UpdateLanguage = () => {
@@ -52,10 +52,9 @@ export const Allowance = () => {
     }
     if (allowanceQualification === true) {
       setQualificationMessage(t("allowance_true"));
-    } else if(!allowanceQualification === false) {
+    } else if (!allowanceQualification === false) {
       setQualificationMessage(t("allowance_false"));
-    }
-    else {
+    } else {
       setQualificationMessage(t("allowance_test"));
     }
     // console.log(daysOfEarnings);
