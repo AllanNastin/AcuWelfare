@@ -101,7 +101,7 @@ export const Allowance = () => {
       >
         {t("calculate_button")}
       </button>
-        <p> {qualificationMessage} </p>
+        <p> {t("qualificationMessage")} </p>
     </div>
   );
 };
