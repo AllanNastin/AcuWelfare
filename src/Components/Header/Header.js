@@ -1,9 +1,10 @@
 import React from "react";
-import "./Header.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next"
 import i18next from "i18next";
 import cookies from "js-cookie";
+
+import "./Header.css";
 import "../CSS/Flex.css";
 
 const languages = [
@@ -24,7 +25,7 @@ const languages = [
     // dir: "rtl",
   },
 ];
-
+var update = false;
 const Header = () => {
   const currentLanguageCode = cookies.get("i18next") || "en";
   const { t } = useTranslation();
@@ -61,7 +62,13 @@ const Header = () => {
                 <li key={country_code}>
                   <button
                     className="dropdown-item"
-                    onClick={() => i18next.changeLanguage(code)}
+                    onClick={() => {i18next.changeLanguage(code); update = true}}
+                    // console.log(update)
+                    // reload page and change language
+                    // onClick={() => window.location.reload()}
+                    // do two things in one click
+                    // onClick={() => {
+                    // onClick={}
                     disabled={code === currentLanguageCode}
                   >
                     <span
@@ -79,3 +86,20 @@ const Header = () => {
   );
 };
 export default Header;
+
+// method which return state of update variable
+
+const getUpdate = () => {
+  return update;
+};
+
+// method which sets update variable to the input
+const setUpdate = (value) => {
+  update = value;
+};
+
+export { getUpdate, setUpdate };
+
+// const setUpdate = () => {
+//   update = false;
+// };
