@@ -39,23 +39,32 @@ export const Allowance = () => {
     earnings[4] = Number(document.getElementById("sunday").value);
     earnings[5] = Number(document.getElementById("monday").value);
     earnings[6] = Number(document.getElementById("tuesday").value);
+    // console.table(earnings);
     allowanceQualification = undefined;
     daysOfEarnings = 0;
     for (var i = 0; i <= 7; i++) {
       if (earnings[i] > 0) {
         daysOfEarnings++;
+        // console.log(daysOfEarnings);
       }
     }
-    console.log(daysOfEarnings + allowanceQualification);
-    if (daysOfEarnings > 3 && daysOfEarnings !== 0) {
+    // console.log(daysOfEarnings + allowanceQualification);
+    // console.log(allowanceQualification);
+    if (daysOfEarnings > 3) {
       allowanceQualification = false;
+    }
+    else if (daysOfEarnings <= 3 && daysOfEarnings > 0) {
+      allowanceQualification = true;
     }
     if (allowanceQualification === true) {
       setQualificationMessage(t("allowance_true"));
-    } else if (!allowanceQualification === false) {
+      // console.log(allowanceQualification);
+    } else if (allowanceQualification === false) {
       setQualificationMessage(t("allowance_false"));
+    // console.log(allowanceQualification);
     } else {
       setQualificationMessage(t("allowance_test"));
+    // console.log(allowanceQualification);
     }
     // console.log(daysOfEarnings);
   };
