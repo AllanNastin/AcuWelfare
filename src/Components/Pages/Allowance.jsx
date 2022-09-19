@@ -19,9 +19,19 @@ export const Allowance = () => {
   const [qualificationMessage, setQualificationMessage] = useState(
     t("allowance_test")
   );
-  if (allowanceQualification === undefined && getUpdate() === true) {
+  if (getUpdate() === true) {
+    console.log("update");
     // console.log("test");
-    setQualificationMessage(t("allowance_test"));
+    if (allowanceQualification === true) {
+      setQualificationMessage(t("allowance_true"));
+      // console.log(allowanceQualification);
+    } else if (allowanceQualification === false) {
+      setQualificationMessage(t("allowance_false"));
+      // console.log(allowanceQualification);
+    } else {
+      setQualificationMessage(t("allowance_test"));
+      // console.log(allowanceQualification);
+    }
     setUpdate(false);
   }
   // const UpdateLanguage = () => {
@@ -32,6 +42,7 @@ export const Allowance = () => {
   //   setUpdate(false);
   // }
   const calculateAllowance = () => {
+    console.log(getUpdate());
     earnings[0] = Number(document.getElementById("wednesday").value);
     earnings[1] = Number(document.getElementById("thursday").value);
     earnings[2] = Number(document.getElementById("friday").value);
@@ -52,8 +63,7 @@ export const Allowance = () => {
     // console.log(allowanceQualification);
     if (daysOfEarnings > 3) {
       allowanceQualification = false;
-    }
-    else if (daysOfEarnings <= 3 && daysOfEarnings > 0) {
+    } else if (daysOfEarnings <= 3 && daysOfEarnings > 0) {
       allowanceQualification = true;
     }
     if (allowanceQualification === true) {
@@ -61,10 +71,10 @@ export const Allowance = () => {
       // console.log(allowanceQualification);
     } else if (allowanceQualification === false) {
       setQualificationMessage(t("allowance_false"));
-    // console.log(allowanceQualification);
+      // console.log(allowanceQualification);
     } else {
       setQualificationMessage(t("allowance_test"));
-    // console.log(allowanceQualification);
+      // console.log(allowanceQualification);
     }
     // console.log(daysOfEarnings);
   };

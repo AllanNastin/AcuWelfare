@@ -10,7 +10,7 @@ import { Support } from "./Components/Pages/Support";
 import { Transport } from "./Components/Pages/Transport";
 import { Work } from "./Components/Pages/Work";
 import { Taxes } from "./Components/Pages/Taxes";
-import {Allowance} from "./Components/Pages/Allowance"
+import { Allowance } from "./Components/Pages/Allowance";
 
 function App() {
   return (
